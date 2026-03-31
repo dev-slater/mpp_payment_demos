@@ -227,6 +227,7 @@ export function StripeCryptoDemo() {
             <p className="text-xs text-gray-400 dark:text-gray-600 flex items-center gap-2">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               Waiting for on-chain confirmation…
+              <span className="text-gray-300 dark:text-gray-700">— illustrative, will not complete end to end in SBX</span>
             </p>
             <button
               onClick={reset}
