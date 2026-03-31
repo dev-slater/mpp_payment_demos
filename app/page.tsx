@@ -21,7 +21,7 @@ export default function PaymentDemos() {
 
           <div className="flex flex-col gap-4">
             {/* Stripe Checkout — live */}
-            <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] px-6 py-5">
+            <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-white/[0.02] px-6 py-5">
               <div className="flex items-center gap-5 mb-5 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
                 <div className="shrink-0 w-12 h-12 rounded border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] flex items-center justify-center">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-900 dark:text-white">
