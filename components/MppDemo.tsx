@@ -23,7 +23,7 @@ export function MppDemo() {
   const url = `${siteUrl}/api/mpp/widgets?quantity=${quantity}`;
 
   return (
-    <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-gray-50 dark:bg-white/[0.035] px-6 py-5">
+    <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-zinc-100 dark:bg-zinc-900/80 px-6 py-5">
       {/* Product row */}
       <div className="flex items-center gap-5 mb-5 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
         <div className="shrink-0 w-12 h-12 rounded border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.03] flex items-center justify-center">
@@ -33,7 +33,7 @@ export function MppDemo() {
           </svg>
         </div>
         <div>
-          <p className="text-sm font-medium text-gray-900 dark:text-white">Machine Payments with Tempo Wallet Crypto</p>
+          <p className="text-sm font-medium text-gray-900 dark:text-white">Tempo Wallet · Stablecoin</p>
           <p className="text-xs text-gray-400 dark:text-gray-600 font-mono mt-0.5">0.05 usd / token · Tempo stablecoin</p>
         </div>
       </div>

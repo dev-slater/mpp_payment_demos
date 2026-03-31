@@ -170,7 +170,7 @@ export function StripeSptDemo() {
   }
 
   return (
-    <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-gray-100 dark:bg-white/[0.07] px-6 py-5">
+    <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-zinc-100 dark:bg-zinc-900/80 px-6 py-5">
 
       {/* Product row */}
       <div className="flex items-center gap-5 mb-5 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">

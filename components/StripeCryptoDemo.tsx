@@ -96,7 +96,7 @@ export function StripeCryptoDemo() {
   }
 
   return (
-    <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-gray-100/60 dark:bg-white/[0.05] px-6 py-5">
+    <div className="rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-zinc-600/40 px-6 py-5">
 
       {/* Product row */}
       <div className="flex items-center gap-5 mb-5 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
@@ -107,7 +107,7 @@ export function StripeCryptoDemo() {
           </svg>
         </div>
         <div>
-          <p className="text-sm font-medium text-gray-900 dark:text-white">Stripe Machine Payments · Crypto</p>
+          <p className="text-sm font-medium text-gray-900 dark:text-white">Stripe Machine Payments · Stablecoin</p>
           <p className="text-xs text-gray-400 dark:text-gray-600 font-mono mt-0.5">0.05 usd / token · USDC on Tempo · settled in USD by Stripe</p>
         </div>
       </div>
