@@ -24,16 +24,16 @@ type State =
 
 const ROLES = [
   {
-    label: "Merchant",
-    description: "Your server calls Stripe and receives a unique deposit address per payment.",
+    label: "Client / Agent",
+    description: "Sends USDC to the deposit address from any Tempo wallet.",
   },
   {
     label: "Stripe",
     description: "Monitors the Tempo network for incoming USDC. Settles you in USD.",
   },
   {
-    label: "Buyer",
-    description: "Sends USDC to the deposit address from any Tempo wallet.",
+    label: "Merchant",
+    description: "Your server calls Stripe and receives a unique deposit address per payment.",
   },
 ];
 
@@ -127,7 +127,7 @@ export function StripeCryptoDemo() {
             ))}
           </div>
           <p className="text-[10px] text-gray-300 dark:text-gray-700 mb-5">
-            In this demo you play both merchant and buyer.
+            In this demo you play both merchant and client / agent.
           </p>
 
           {/* Quantity + price */}
@@ -170,29 +170,10 @@ export function StripeCryptoDemo() {
         <>
           <div className="flex flex-col gap-2 mb-5">
 
-            {/* Merchant step */}
-            <div className="rounded border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.02] dark:bg-white/[0.02] px-4 py-3">
-              <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-1">
-                1 · Merchant — PaymentIntent created
-              </p>
-              <p className="text-xs text-gray-500 font-mono">{state.payment_intent_id}</p>
-            </div>
-
-            {/* Stripe step */}
-            <div className="rounded border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.02] dark:bg-white/[0.02] px-4 py-3">
-              <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-1">
-                2 · Stripe — deposit address · {state.network} network
-              </p>
-              <p className="text-xs text-gray-700 dark:text-gray-300 font-mono break-all">{state.deposit_address}</p>
-              <p className="text-[10px] text-gray-300 dark:text-gray-700 mt-1.5">
-                Stripe monitors this address and auto-captures when USDC arrives.
-              </p>
-            </div>
-
-            {/* Buyer step */}
+            {/* Client / Agent step */}
             <div className="rounded border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.02] dark:bg-white/[0.02] px-4 py-3">
               <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2">
-                3 · Buyer — send payment
+                1 · Client / Agent — send payment
               </p>
               {state.supported_tokens.length > 1 && (
                 <div className="flex gap-1 mb-2">
@@ -221,6 +202,25 @@ export function StripeCryptoDemo() {
               </p>
             </div>
 
+            {/* Stripe step */}
+            <div className="rounded border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.02] dark:bg-white/[0.02] px-4 py-3">
+              <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-1">
+                2 · Stripe — deposit address · {state.network} network
+              </p>
+              <p className="text-xs text-gray-700 dark:text-gray-300 font-mono break-all">{state.deposit_address}</p>
+              <p className="text-[10px] text-gray-300 dark:text-gray-700 mt-1.5">
+                Stripe monitors this address and auto-captures when USDC arrives.
+              </p>
+            </div>
+
+            {/* Merchant step */}
+            <div className="rounded border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.02] dark:bg-white/[0.02] px-4 py-3">
+              <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-1">
+                3 · Merchant — PaymentIntent created
+              </p>
+              <p className="text-xs text-gray-500 font-mono">{state.payment_intent_id}</p>
+            </div>
+
           </div>
 
           <div className="flex items-center justify-between">
@@ -246,7 +246,7 @@ export function StripeCryptoDemo() {
               <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-1">
                 Stripe settled
               </p>
-              <p className="text-xs text-gray-700 dark:text-gray-300">{state.amount_usd} usd · buyer paid USDC · merchant receives USD</p>
+              <p className="text-xs text-gray-700 dark:text-gray-300">{state.amount_usd} usd · client / agent paid USDC · merchant receives USD</p>
             </div>
             <div className="rounded border border-black/[0.06] dark:border-white/[0.06] bg-black/[0.02] dark:bg-white/[0.02] px-4 py-3">
               <p className="text-[10px] uppercase tracking-widest text-gray-400 dark:text-gray-600 mb-2">Payment receipt</p>
