@@ -7,9 +7,10 @@ export const dynamic = "force-dynamic";
 // Crypto PaymentIntents require the 2026-03-04.preview API version.
 // Per Stripe's official sample (stripe-samples/machine-payments), the only
 // supported approach is a separate client with @ts-expect-error at construction.
+let _stripe: Stripe | null = null;
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error — preview version string not yet in SDK types
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2026-03-04.preview" });
+function getStripe() { return _stripe ??= new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: "2026-03-04.preview" }); }
 
 // Shape of next_action returned for a crypto deposit PaymentIntent.
 // Not yet in SDK types — confirmed from Stripe MPP docs.
@@ -30,7 +31,7 @@ export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const pi = searchParams.get("pi");
     if (!pi) return NextResponse.json({ error: "Missing pi param" }, { status: 400 });
-    const paymentIntent = await stripe.paymentIntents.retrieve(pi);
+    const paymentIntent = await getStripe().paymentIntents.retrieve(pi);
     return NextResponse.json({ status: paymentIntent.status, amount_received: paymentIntent.amount_received });
   } catch (err) {
     return stripeErrorResponse(err);
@@ -42,7 +43,7 @@ export async function POST(req: Request) {
     const body = await req.json().catch(() => ({}));
     const amount_cents = Math.max(1, Math.min(1000, Number(body.amount_cents ?? 10)));
 
-    const paymentIntent = await stripe.paymentIntents.create(
+    const paymentIntent = await getStripe().paymentIntents.create(
       {
         amount: amount_cents,
         currency: "usd",
